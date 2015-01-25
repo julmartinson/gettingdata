@@ -1,4 +1,4 @@
-# Getting and Cleaning data course project - analysis of data in Human Activity Recognition Using Smartphones Dataset
+## Getting and Cleaning data course project - analysis of data in Human Activity Recognition Using Smartphones Dataset
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz.  The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows.The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 
@@ -9,19 +9,25 @@ The collected data have been provided as two sets:
 
 List of measurement names and their description have been provided as *feautures.txt* and *features_info.txt*  
 
-# Steps performed during analysis of the collected data:
-- 1. subject, activity and signal measurements are combined for each set
-- 2. training and test sets are combined together
-- 3. measurement names derived from *feature.txt* are applied to resulting combined dataset
-- 4. measurements of mean (mean() function in the measurements name) and standard deviation (std() in measurement name) are extracted for further analysis
-- 5. activity identifiers are replaced by activity label to improve readebility
-- 6. average of each measurement extracted in step 4 is calculated by subject and activity
-- 7. resulting data with subject, activity and calculated averages for each measurement is saved as tidy data set
+## Steps performed during analysis of the collected data 
+### (see README.md for more details):
+1. subject, activity and signal measurements are combined for each set
+2. training and test sets are combined together
+3. measurement names derived from *feature.txt* are applied to resulting combined dataset
+4. measurements of mean (mean() function in the measurements name) and standard deviation (std() in measurement name) are extracted for further analysis
+5. activity identifiers are replaced by activity labels to improve readability
+6. average of each measurement extracted in step 4 is calculated by subject and activity
+7. resulting data with subject, activity and calculated averages for each measurement is saved as tidy data set
 
 
-# Variables in the resulting tidy data set:
+## Variables in the resulting tidy data set:
+*Identifiers of suject and activity* (2 varialbles)
+
  - **Subject** numeric identifier for subject, values from 1 to 30
  - **Activity** activity labes, 6 values (LAYING, STANDING, SITTING, WALKING, WALKING_DOWNSTAIRS, WALKING_UPSTAIRS)
+ 
+*Averages by subject and activity of means and standard deviations for selected measurements* (66 variables)
+
  - **AVG_tBodyAcc_mean_X** average of mean of accelerometer raw signal, X measurement
  - **AVG_tBodyAcc_mean_Y** average of mean of accelerometer raw signal, Y measurement
  - **AVG_tBodyAcc_mean_Z** average of mean of accelerometer raw signal, Z measurement
