@@ -24,7 +24,7 @@ s2Activity <- read.table("./UCI HAR Dataset/test/y_test.txt")
 # merge subject, activity and measurements for training set
 set1 <- cbind(s1Subject, s1Activity, s1Measure)
 # merge subject, activity and measurements for test set
-set2 <- cbind(s2Subject, s2Measure, s2Activity)
+set2 <- cbind(s2Subject, s2Activity, s2Measure)
 # merge training and test together
 fullSet <- rbind(set1, set2)
 
@@ -52,7 +52,7 @@ extractSet <- fullSet[, grep("Subject|Activity|mean_|std_", cols)]
 aLabels <- read.table("./UCI HAR Dataset/activity_labels.txt")
 names(aLabels) <- c("value", "Activity")
 # merge dataset extracted in step 5 with labels for Activity column
-extractSetL <- merge(aLabels, extractSet, by.x="value", by.y="Activity")
+extractSetL <- merge(aLabels, extractSet, by.x="value", by.y="Activity",all=TRUE)
 # remove activity value column, leave only activity labels
 extractSetL$value <- NULL
 
@@ -62,10 +62,11 @@ extractSetL$value <- NULL
 tidySet <- ddply(extractSetL, .(Subject,Activity), colwise(mean))
 
 ## 8) clean column names in tidy dataset, add AVG to measurement names
-names(tidySet) <- gsub("^t", "AVG_t", names(tidySet))
-names(tidySet) <- gsub("^f", "AVG_f", names(tidySet))
 names(tidySet) <- gsub("__", "_", names(tidySet))
 names(tidySet) <- gsub("_$", "", names(tidySet))
+names(tidySet) <- gsub("BodyBody", "Body", names(tidySet))
+names(tidySet) <- gsub("^t", "AVG_t", names(tidySet))
+names(tidySet) <- gsub("^f", "AVG_f", names(tidySet))
 
 ## 9) save tidy dataset into text file, columns separated by tab
 write.table(tidySet,"TidyData.txt",row.names = FALSE, sep="\t", quote = FALSE)
